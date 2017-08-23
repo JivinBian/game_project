@@ -7,7 +7,7 @@ namespace GameCore.Script.Common.Interactive
     public sealed class CollideMouseController:CollideControllerBase
     {
         private float _lastPressTime;
-        private const float DELTA_TIME = 0.1f;
+        private const float DELTA_TIME = 0.2f;
         public CollideMouseController(Transform pTargetTransform):base(pTargetTransform)
         {
             TimeManager.GetInstance().LateUpdateEvent += Check;
