@@ -1,0 +1,6 @@
+Library/
+.svn/
+test.apk
+obj/
+.idea/
+*.sln

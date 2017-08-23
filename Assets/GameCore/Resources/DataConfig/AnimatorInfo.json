@@ -1,0 +1,7 @@
+﻿[
+    {
+		"id":1,
+		"Path":"Player/PlayerCommon",
+		"AnimationPath":"Player/Player1/"
+    }
+]

@@ -1,0 +1,12 @@
+﻿[
+	{
+		"ID": 1,
+		"Name": "lifu",
+		"NeedPackage": true
+    },
+	{
+		"ID": 2,
+		"Name": "test",
+		"NeedPackage": true
+    }
+]

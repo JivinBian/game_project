@@ -1,0 +1,32 @@
+﻿  [
+    {
+		"id":1,
+		"fileName": "SceneInfo",
+		"classStructClass":""
+    },
+	{
+		"id":2,
+		"fileName": "SceneModel",
+		"classStructClass":""
+    },
+	{
+		"id":3,
+		"fileName": "SceneObjectProperty",
+		"classStructClass":""
+    },
+	{
+		"id":4,
+		"fileName": "SceneRoleProperty",
+		"classStructClass":""
+    },
+	{
+		"id":5,
+		"fileName": "AnimatorInfo",
+		"classStructClass":""
+    },
+	{
+		"id":6,
+		"fileName": "NPCInfo",
+		"classStructClass":""
+    }
+  ]

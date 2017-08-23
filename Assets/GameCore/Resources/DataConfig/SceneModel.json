@@ -1,0 +1,28 @@
+﻿  [
+    {
+      "ID": 1,
+      "ModelName": "player1",
+	  "OffsetX":0,
+	  "OffsetY":0,
+	  "OffsetZ":0,
+	  "SizeX":1,
+	  "SizeY":1,
+	  "SizeZ":1,
+	  "RotationX":0,
+	  "RotationY":0,
+	  "RotationZ":0
+    },
+	{
+      "ID": 2,
+      "ModelName": "chenjialuo",
+	  "OffsetX":0,
+	  "OffsetY":0,
+	  "OffsetZ":0,
+	  "SizeX":1,
+	  "SizeY":1,
+	  "SizeZ":1,
+	  "RotationX":0,
+	  "RotationY":0,
+	  "RotationZ":0
+    }
+  ]
