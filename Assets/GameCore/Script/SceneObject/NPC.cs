@@ -1,5 +1,7 @@
 ﻿using GameCore.Script.DataClass.ObjectData;
 using GameCore.Script.Interface;
+using GameCore.Script.Managers.Object;
+using UnityEngine;
 
 namespace GameCore.Script.SceneObject
 {
@@ -14,6 +16,16 @@ namespace GameCore.Script.SceneObject
 		{
 			base.ParseModelData();
 			_sourcePath += "NPC/";
+		}
+
+		protected override string GetContainerName()
+		{
+			return "NPC_"+_objectBaseData.Guid;
+		}
+
+		protected override void OnClick(Transform pTarget,Vector3 pTargetPoint)
+		{
+			ObjectManager.GetInstance().GetPlayer(1).MoveTo(pTargetPoint);
 		}
 	}
 }

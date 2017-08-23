@@ -34,9 +34,15 @@ namespace GameCore.Script.Managers.Object
 		}
 		//////////////////////////////////////////////
 		private List<ObjectBase> _sceneObjectList;
-
 		private Dictionary<uint, Player> _playerList;
 		private Dictionary<uint, NPC> _NPCList;
+		//////////////////////////////////////////////////
+
+		//////////////////////////////////////////////////
+		public void Init()
+		{
+
+		}
 		/// <summary>
 		/// 创建一个玩家
 		/// </summary>
@@ -67,6 +73,7 @@ namespace GameCore.Script.Managers.Object
 			tNPC.Create();
 			_NPCList[pNpcData.Guid] = tNPC;
 			_sceneObjectList.Add(tNPC);
+			
 			return tNPC;
 		}
 		public Player GetPlayer(uint pGuid)
@@ -93,6 +100,12 @@ namespace GameCore.Script.Managers.Object
 			{
 				Guid = 1,
 				Position = new Vector3(15, 0, 15)
+			};
+			CreatNPC(tNPCData);
+			tNPCData = new NPCData(DataConfigManager.GetInstance(), 1)
+			{
+				Guid = 2,
+				Position = new Vector3(0, 0, 0)
 			};
 			CreatNPC(tNPCData);
 		}

@@ -49,6 +49,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameCore\Script\Common\Interactive\CollideControllerBase.cs" />
+    <Compile Include="Assets\GameCore\Script\Common\Interactive\CollideMouseController.cs" />
+    <Compile Include="Assets\GameCore\Script\Common\Interactive\CollideTouchController.cs" />
     <Compile Include="Assets\GameCore\Script\Common\Path\AutoMoveAgent.cs" />
     <Compile Include="Assets\GameCore\Script\Common\Path\AutoMoveNavMesh.cs" />
     <Compile Include="Assets\GameCore\Script\Common\State\AnimatorStateController.cs" />

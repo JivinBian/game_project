@@ -10,7 +10,9 @@
 	  "SizeZ":1,
 	  "RotationX":0,
 	  "RotationY":0,
-	  "RotationZ":0
+	  "RotationZ":0,
+	  "Height":1.6,
+	  "Radius":0.5
     },
 	{
       "ID": 2,
@@ -23,6 +25,8 @@
 	  "SizeZ":1,
 	  "RotationX":0,
 	  "RotationY":0,
-	  "RotationZ":0
+	  "RotationZ":0,
+	  "Height":1.6,
+	  "Radius":0.5
     }
   ]

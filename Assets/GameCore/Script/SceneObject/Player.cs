@@ -9,7 +9,10 @@ namespace GameCore.Script.SceneObject
 		{
 			
 		}
-		
+		protected override string GetContainerName()
+		{
+			return "Player_"+_objectBaseData.Guid;
+		}
 		protected override void ParseModelData()
 		{
 			base.ParseModelData();

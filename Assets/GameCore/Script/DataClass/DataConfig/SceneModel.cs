@@ -16,5 +16,8 @@
 		public int RotationX{ get; private set; }
 		public int RotationY{ get; private set; }
 		public int RotationZ{ get; private set; }
+		
+		public float Height { get; private set; }
+		public float Radius { get; private set; }
 	}
 }

@@ -9,6 +9,7 @@ namespace GameCore.Script.Managers.Game
 
 		private Action _updateAction;
 		private Action _fixedUpdateAction;
+		private Action _lateUpdateAction;
 		private bool _inited;
 		void Awake()
 		{
@@ -22,15 +23,21 @@ namespace GameCore.Script.Managers.Game
 			}
 			_updateAction = TimeManager.GetInstance().Update;
 			_fixedUpdateAction = TimeManager.GetInstance().FixedUpdate;
+			_lateUpdateAction = TimeManager.GetInstance().LateUpdate;
 		}
 		void Update ()
 		{
 			_updateAction();
 		}
 
-		private void FixedUpdate()
+		void FixedUpdate()
 		{
 			_fixedUpdateAction();
+		}
+
+		private void LateUpdate()
+		{
+			_lateUpdateAction();
 		}
 	}
 }

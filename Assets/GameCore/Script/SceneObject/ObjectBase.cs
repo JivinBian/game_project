@@ -1,5 +1,5 @@
 ﻿/********************************************************************************
-** 类名称：场景中所有动态生成的对象的基类，作用在于操控模型与数据，处理两者之间的关系，不让模型直接对外暴露
+** 类名称：场景中所有动态生成的对象的基类，作用在于操控模型与数据，处理两者之间的关系，模型不直接对外暴露
 ** 描述：
 ** 作者：
 ** 创建时间：
@@ -9,13 +9,15 @@
 *********************************************************************************/
 
 using System;
+using GameCore.Script.Common.Interactive;
 using GameCore.Script.DataClass.DataConfig;
 using GameCore.Script.DataClass.ObjectData;
 using GameCore.Script.GameData.DataConfig;
+using GameCore.Script.GameManagers.Log;
 using GameCore.Script.Interface;
+using GameCore.Script.Managers.Time;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
 
 namespace GameCore.Script.SceneObject
 {
@@ -28,6 +30,8 @@ namespace GameCore.Script.SceneObject
 		protected IDataConfigManager _configManager;
 		protected IResourceManager _resourceManager;
 		protected string _sourcePath="SceneModel/";
+
+		protected CollideControllerBase _collideController;
 		////
 		/// 存储容器的transform
 		protected Transform _transform;
@@ -59,7 +63,7 @@ namespace GameCore.Script.SceneObject
 		/// <returns></returns>
 		protected virtual void CreateContainer()
 		{
-			_contentContainer=new GameObject("SceneObjectContainer");
+			_contentContainer=new GameObject(GetContainerName());
 			ContainerCreateComplete();
 		}
 		/// <summary>
@@ -102,6 +106,11 @@ namespace GameCore.Script.SceneObject
 			}
 			ModelLoadedCompleteEvent();
 		}
+
+		protected virtual string GetContainerName()
+		{
+			return _objectBaseData.Guid.ToString();
+		}
 		/// <summary>
 		/// 主体模型的名字
 		/// </summary>
@@ -128,11 +137,25 @@ namespace GameCore.Script.SceneObject
 
 		private void InitCollider()
 		{
+			_collideController=new CollideMouseController(_content.transform);
+			_collideController.PressEvent += OnPress;
+			_collideController.ReleaseEvent += OnRelease;
+			_collideController.ClickEvent += OnClick;
 			var tCollider = _content.AddComponent<CapsuleCollider>();
-			tCollider.height = 5;
-			tCollider.radius = 5;
+			tCollider.height = _objectBaseData.Height;
+			tCollider.radius = _objectBaseData.Radius;
+			tCollider.center =new Vector3(0,_objectBaseData.Height / 2,0);
 		}
-		
+
+		protected virtual void OnPress(Transform pTarget,Vector3 pTargetPoint)
+		{
+		}
+		protected virtual void OnRelease(Transform pTarget,Vector3 pTargetPoint)
+		{
+		}
+		protected virtual void OnClick(Transform pTarget,Vector3 pTargetPoint)
+		{
+		}
 		////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/// 事件相关
 		protected virtual void BindingEvent()

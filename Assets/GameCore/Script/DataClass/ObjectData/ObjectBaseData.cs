@@ -15,12 +15,10 @@ namespace GameCore.Script.DataClass.ObjectData
 		public Vector3 Size { get; protected set; }
 		public Vector3 Rotaion { get; protected set; }
 		public Vector3 Offset { get; protected set; }
+		public float Height { get; protected set; }
+		public float Radius { get; protected set; }
 		public Vector3 Position { get; set; }//动态数据不从配置读取
 		public uint Guid { get; set; }
-		public float Height 
-		{
-			get { return Offset.y; }
-		}
 		public float Direction { get; set; }
 
 		protected ObjectBaseData(IDataConfigManager pDataConfigManager)
@@ -51,6 +49,8 @@ namespace GameCore.Script.DataClass.ObjectData
 				ModelId = tBaseData.ModelID;
 				Name = tBaseData.Name;
 				var tModelData =_dataConfigManager.GetConfigData<SceneModel>(DataConfigDefine.SceneModel, ModelId);
+				Height = tModelData.Height;
+				Radius = tModelData.Radius;
 				Size=new Vector3(tModelData.SizeX,tModelData.SizeY,tModelData.SizeZ);
 				Rotaion=new Vector3(tModelData.RotationX,tModelData.RotationY,tModelData.RotationZ);
 				Offset=new Vector3(tModelData.OffsetX,tModelData.OffsetY,tModelData.OffsetZ);
