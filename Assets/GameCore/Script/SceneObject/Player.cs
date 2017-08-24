@@ -3,20 +3,30 @@ using GameCore.Script.Interface;
 
 namespace GameCore.Script.SceneObject
 {
-	public class Player:RoleBase
+	public sealed class Player:CommonPlayer,IControllable
 	{
+		private IPlayerController _playerController;
 		public Player(PlayerData pData,IDataConfigManager pDataConfigManager,IResourceManager pResourceManager) : base(pData,pDataConfigManager,pResourceManager)
 		{
 			
 		}
-		protected override string GetContainerName()
+
+		protected override void ContainerCreateComplete()
 		{
-			return "Player_"+_objectBaseData.Guid;
+			base.ContainerCreateComplete();
+			if (_playerController != null)
+			{
+				_playerController.SetControlledTranform(_contentContainer.transform);
+			}
 		}
-		protected override void ParseModelData()
+
+		public void InitController(IPlayerController playerController)
 		{
-			base.ParseModelData();
-			_sourcePath += "Player/";
+			_playerController = playerController;
+			if (_contentContainer != null)
+			{
+				_playerController.SetControlledTranform(_contentContainer.transform);
+			}
 		}
 	}
 }

@@ -10,7 +10,7 @@ public class Test : MonoBehaviour
 
 	private Button _btn;
 
-	private Player _player;
+	private CommonPlayer _player;
 
 	public Button Idle;
 	// Use this for initialization
@@ -21,7 +21,7 @@ public class Test : MonoBehaviour
 		_player=ObjectManager.GetInstance().GetPlayer(1);
 		Idle.onClick.AddListener(OnClickIdle);
 		GameObject pGo=GameObject.Find("Plane");
-		new InputMouseController(pGo.transform).ClickEvent+= (t,p) => { _player.MoveTo(p); };
+	//	new InputMouseController(pGo.transform).ClickEvent+= (t,p) => { _player.MoveTo(p); };
 	}
 
 	private void OnClickIdle()

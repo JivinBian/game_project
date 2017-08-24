@@ -39,7 +39,7 @@ namespace GameCore.Script.SceneObject
 
         /// ///////
         /// event
-        public event Action ModelLoadedCompleteEvent;
+        public event Action ContentLoadedCompleteEvent;
 
         public event Action<Vector3> PositionChanged;
 
@@ -115,7 +115,7 @@ namespace GameCore.Script.SceneObject
                 _content = GameObject.Instantiate(pObject) as GameObject;
                 _content.name = GetContentObjectName();
             }
-            ModelLoadedCompleteEvent();
+            ContentLoadedCompleteEvent();
         }
 
         protected virtual string GetContainerName()
@@ -184,7 +184,7 @@ namespace GameCore.Script.SceneObject
         protected virtual void BindingEvent()
         {
             PositionChanged += SetSelfPosition;
-            ModelLoadedCompleteEvent += OnLoadModelComplete;
+            ContentLoadedCompleteEvent += OnLoadModelComplete;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////

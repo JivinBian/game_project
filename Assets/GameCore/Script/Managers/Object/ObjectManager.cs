@@ -27,7 +27,7 @@ namespace GameCore.Script.Managers.Object
 		private ObjectManager()
 		{
 			_sceneObjectList = new List<ObjectBase>();
-			_playerList = new Dictionary<uint, Player>();
+			_playerList = new Dictionary<uint, CommonPlayer>();
 			_NPCList=new Dictionary<uint, NPC>();
 		}
 
@@ -37,8 +37,10 @@ namespace GameCore.Script.Managers.Object
 		}
 		//////////////////////////////////////////////
 		private List<ObjectBase> _sceneObjectList;
-		private Dictionary<uint, Player> _playerList;
+		private Dictionary<uint, CommonPlayer> _playerList;
 		private Dictionary<uint, NPC> _NPCList;
+
+		public Player Self;
 		//////////////////////////////////////////////////
 		public event Action<uint> CreatePlayerCompleteEvent;
 		//////////////////////////////////////////////////
@@ -46,19 +48,25 @@ namespace GameCore.Script.Managers.Object
 		{
 
 		}
+
+		public void CreateSelf(PlayerData pData)
+		{
+			Self=new Player(pData, DataConfigManager.GetInstance(), ResourceManager.GetInstance());
+			Self.Create();
+		}
 		/// <summary>
 		/// 创建一个玩家
 		/// </summary>
 		/// <param name="pData"></param>
 		/// <returns></returns>
-		public Player CreatePlayer(PlayerData pData)
+		public CommonPlayer CreatePlayer(PlayerData pData)
 		{
 			if (_playerList.ContainsKey(pData.Guid))
 			{
 				LogManager.Error("duplicate player, guid:"+pData.Guid);
 				return _playerList[pData.Guid];
 			}
-			Player tPlayer = new Player(pData, DataConfigManager.GetInstance(), ResourceManager.GetInstance());
+			CommonPlayer tPlayer = new CommonPlayer(pData, DataConfigManager.GetInstance(), ResourceManager.GetInstance());
 			tPlayer.Create();
 			_playerList[pData.Guid] = tPlayer;
 			_sceneObjectList.Add(tPlayer);
@@ -83,7 +91,7 @@ namespace GameCore.Script.Managers.Object
 			
 			return tNPC;
 		}
-		public Player GetPlayer(uint pGuid)
+		public CommonPlayer GetPlayer(uint pGuid)
 		{
 			if (_playerList.ContainsKey(pGuid))
 			{
@@ -102,8 +110,8 @@ namespace GameCore.Script.Managers.Object
 				MP = 30,
 				Position = new Vector3(5, 0, 20)
 			};
-			Player tPlayer=CreatePlayer(tPlayerData);
-			GameSceneManager.GetInstance().SetCameraObject(tPlayer);
+			CreateSelf(tPlayerData);
+			GameSceneManager.GetInstance().SetCameraObject(Self);
 			var tNPCData = new NPCData(DataConfigManager.GetInstance(), 1)
 			{
 				Guid = 1,
