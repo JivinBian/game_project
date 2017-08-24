@@ -1,48 +1,54 @@
-﻿using GameCore.Script.Managers.Interactive;
+﻿using GameCore.Script.GameManagers.Log;
+using GameCore.Script.Managers.Interactive;
 using GameCore.Script.Managers.Time;
 using GameCore.Script.SceneObject;
+using UnityEditor;
 using UnityEngine;
 
 namespace GameCore.Script.Managers.Scene
 {
 	public sealed class CameraFixedUp:CameraControllerBase
 	{
-		private bool _enabled;
 		private Vector3 _offset;
-		public override bool Enabled {
-			get { return _enabled; }
-			set
-			{
-				_enabled = value;
-				if (_enabled)
-				{
-					TimeManager.GetInstance().FixedUpdateEvent += UpdatePosition;
-				}
-				else
-				{
-					TimeManager.GetInstance().FixedUpdateEvent -= UpdatePosition;
-				}
-			} }
 		public CameraFixedUp(ObjectBase pObjectBase=null,bool pEnabled=false) : base(pObjectBase,pEnabled)
 		{
-			_offset=new Vector3(0,20,-40);
+			_offset=new Vector3(0,7,-11);
 			Enabled = pEnabled;
-			InteractiveManager.GetInstance().SwipeEvent += OnSwip;
+			InteractiveManager.GetInstance().DragEvent += OnSwip;
 		}
 
-		private Quaternion qua;
-		private void OnSwip(SwipeGesture pGesture)
+		private Vector2 _lastPosition;
+		private void OnSwip(DragGesture pGesture)
 		{
-			_currentCamera.transform.RotateAround(_trackedObject.GetPosition(),Vector3.up,1);
-			_offset = _currentCamera.transform.position - _trackedObject.GetPosition();
+			if (_lastPosition!=pGesture.Position)
+			{
+				_currentCamera.transform.RotateAround(_trackedObject.GetPosition(),Vector3.up,pGesture.DeltaMove.x/10);
+				_trackedObject.SetDirection(_trackedObject.GetDirection()+pGesture.DeltaMove.x/10);
+				_offset = _currentCamera.transform.position - _trackedObject.GetPosition();
+				_lastPosition = pGesture.Position;
+			}
+		}
+
+		public override void SetTrackedObject(ObjectBase pTrackedObject)
+		{
+			base.SetTrackedObject(pTrackedObject);
+			if (pTrackedObject!=null)
+			{
+				pTrackedObject.PositionChanged += UpdatePosition;
+				UpdatePosition(pTrackedObject.GetPosition());
+			}
 		}
 
 		protected override void UpdatePosition()
 		{
-			if (_currentCamera!=null && _trackedObject!=null)
+		}
+
+		private void UpdatePosition(Vector3 pPos)
+		{
+			if (_currentCamera!=null && _trackedObject!=null&&Enabled)
 			{
-				_currentCamera.transform.position = _trackedObject.GetPosition() +_offset;
-				_currentCamera.transform.LookAt(_trackedObject.GetPosition());
+				_currentCamera.transform.position = pPos +_offset;
+				_currentCamera.transform.LookAt(pPos);
 			}
 			
 		}

@@ -15,12 +15,12 @@ namespace GameCore.Script.Managers.Scene
 			SetCamera();
 		}
 
-		public void SetCamera(Camera pCamera=null)
+		public virtual void SetCamera(Camera pCamera=null)
 		{
 			_currentCamera = pCamera??Camera.main;
 		}
 
-		public void SetTrackedObject(ObjectBase pTrackedObject)
+		public virtual void SetTrackedObject(ObjectBase pTrackedObject)
 		{
 			_trackedObject = pTrackedObject;
 		}

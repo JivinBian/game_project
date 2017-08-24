@@ -215,24 +215,24 @@ namespace GameCore.Script.SceneObject
         //朝向
         private void SetSelfRotation(float pAngle)
         {
-            _transform.localRotation = Quaternion.Euler(0, pAngle, 0);
+            _transform.rotation = Quaternion.Euler(0, pAngle, 0);
         }
 
         public void FaceTo(Vector3 pTargetPosition)
         {
             _transform.LookAt(pTargetPosition);
-            _objectBaseData.Direction = _transform.localRotation.eulerAngles.y;
+            _objectBaseData.Direction = _transform.rotation.eulerAngles.y;
         }
 
-        public void SetRotation(float pAngle)
+        public void SetDirection(float pAngle)
         {
             _objectBaseData.Direction = pAngle;
             SetSelfRotation(pAngle);
         }
 
-        public float GetRotation()
+        public float GetDirection()
         {
-            return _transform.localRotation.eulerAngles.y;
+            return _objectBaseData.Direction;
         }
     }
 }

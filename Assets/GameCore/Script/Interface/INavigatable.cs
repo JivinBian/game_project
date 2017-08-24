@@ -13,8 +13,8 @@ namespace GameCore.Script.Interface
 		void SetPosition(Vector3 pPosition);
 		float Speed { get; }
 		float GetStopDistance();
-		void SetRotation(float pRotaion);
-		float GetRotation();
+		void SetDirection(float pRotaion);
+		float GetDirection();
 		void FaceTo(Vector3 pTargetPosition);
 		float GetAcceleration();
 		float GetAngularSpeed();

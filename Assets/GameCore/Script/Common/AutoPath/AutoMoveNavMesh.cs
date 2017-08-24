@@ -44,7 +44,7 @@ namespace GameCore.Script.Common.Path
 					_navMeshAgent.SetDestination(_targetPosition);
 				}
 				_walker.SetPosition(_navMeshAgent.nextPosition);
-				_walker.SetRotation(_agentTransform.localRotation.eulerAngles.y);
+				_walker.SetDirection(_agentTransform.rotation.eulerAngles.y);
 				if (HasReachedToTarget(_targetPosition))
 				{
 					ReachToTarget();
