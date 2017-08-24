@@ -52,6 +52,7 @@
     <Compile Include="Assets\GameCore\Editor\BuildTool\BuildAndroid.cs" />
     <Compile Include="Assets\GameCore\Editor\BuildTool\BuildPackageBase.cs" />
     <Compile Include="Assets\GameCore\Editor\GameMenu.cs" />
+    <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>

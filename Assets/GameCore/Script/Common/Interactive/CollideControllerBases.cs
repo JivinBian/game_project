@@ -10,6 +10,9 @@ namespace GameCore.Script.Common.Interactive
         public event Action<Transform,Vector3> ClickEvent;
 
         protected Transform _targetTransform;
+
+        public virtual bool Enabled { get; set; }
+
         protected CollideControllerBase(Transform pTargetTransform)
         {
             _targetTransform = pTargetTransform;

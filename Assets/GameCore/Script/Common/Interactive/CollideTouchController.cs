@@ -1,5 +1,4 @@
-﻿using GameCore.Script.GameManagers.Log;
-using GameCore.Script.Managers.Time;
+﻿using GameCore.Script.Managers.Time;
 using UnityEngine;
 
 namespace GameCore.Script.Common.Interactive

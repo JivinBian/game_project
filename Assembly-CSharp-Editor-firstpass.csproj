@@ -49,7 +49,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\DragRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerDownDetectorInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerEventDetectorInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerGesturesEditorUtils.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerGesturesInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerHoverDetectorInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerMotionDetectorInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\FingerUpDetectorInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\GestureRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\LongPressRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\PinchRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\PointCloudGestureEditor.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\PointCloudGestureTemplateInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\PointCloudRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\SwipeRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\TapRecognizerInspector.cs" />
+    <Compile Include="Assets\Plugins\Editor\FingerGestures\TwistRecognizerInspector.cs" />
     <Compile Include="Assets\Plugins\Editor\JetBrains\Unity3DRider.cs" />
+    <None Include="Assets\Plugins\FingerGestures\Readme.txt" />
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
