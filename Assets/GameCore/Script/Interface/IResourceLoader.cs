@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using GameCore.Script.GameManagers.Resource;
+using GameCore.Script.Managers.Resource;
 
 namespace GameCore.Script.Interface
 {

@@ -59,7 +59,7 @@ namespace GameCore.Script.Managers.Resource
 		public UnityEngine.Object LoadFromResource(string pPath,Type pType=null,bool pInit=false)
 		{
 			Type tType = pType == null ? typeof(GameObject) : pType;
-			UnityEngine.Object tObject=Resources.Load(pPath, pType);
+			UnityEngine.Object tObject=Resources.Load(pPath, tType);
 			if (pInit)
 			{
 				return UnityEngine.Object.Instantiate(tObject);

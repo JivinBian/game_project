@@ -7,9 +7,12 @@
 ** 最后修改时间：
 ** 版权所有 (C) :
 *********************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using GameCore.Script.DataClass.ObjectData;
 using GameCore.Script.GameManagers.Log;
+using GameCore.Script.GameManagers.Scene;
 using GameCore.Script.Managers.DataConfig;
 using GameCore.Script.Managers.Resource;
 using GameCore.Script.SceneObject;
@@ -37,7 +40,7 @@ namespace GameCore.Script.Managers.Object
 		private Dictionary<uint, Player> _playerList;
 		private Dictionary<uint, NPC> _NPCList;
 		//////////////////////////////////////////////////
-
+		public event Action<uint> CreatePlayerCompleteEvent;
 		//////////////////////////////////////////////////
 		public void Init()
 		{
@@ -59,6 +62,10 @@ namespace GameCore.Script.Managers.Object
 			tPlayer.Create();
 			_playerList[pData.Guid] = tPlayer;
 			_sceneObjectList.Add(tPlayer);
+			if (CreatePlayerCompleteEvent != null)
+			{
+				CreatePlayerCompleteEvent(pData.Guid);
+			}
 			return tPlayer;
 		}
 
@@ -95,7 +102,8 @@ namespace GameCore.Script.Managers.Object
 				MP = 30,
 				Position = new Vector3(5, 0, 20)
 			};
-			CreatePlayer(tPlayerData);
+			Player tPlayer=CreatePlayer(tPlayerData);
+			GameSceneManager.GetInstance().SetCameraObject(tPlayer);
 			var tNPCData = new NPCData(DataConfigManager.GetInstance(), 1)
 			{
 				Guid = 1,

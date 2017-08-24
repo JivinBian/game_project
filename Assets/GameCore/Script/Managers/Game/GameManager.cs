@@ -12,10 +12,13 @@ using System.Runtime.Serialization;
 using GameCore.Script.Common.Utils;
 using GameCore.Script.GameManagers.GameState;
 using GameCore.Script.GameManagers.Log;
+using GameCore.Script.GameManagers.Scene;
 using GameCore.Script.Managers.DataConfig;
+using GameCore.Script.Managers.Interactive;
 using GameCore.Script.Managers.Resource;
 using GameCore.Script.Managers.Time;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using ObjectManager = GameCore.Script.Managers.Object.ObjectManager;
 
 namespace GameCore.Script.Managers.Game
@@ -58,6 +61,8 @@ namespace GameCore.Script.Managers.Game
 			DataConfigManager.GetInstance().Init();
 			TimeManager.GetInstance().Init();
 			ObjectManager.GetInstance().Init();
+			InteractiveManager.GetInstance().Init();
+			GameSceneManager.GetInstance().Init();
 		}
 		
 		

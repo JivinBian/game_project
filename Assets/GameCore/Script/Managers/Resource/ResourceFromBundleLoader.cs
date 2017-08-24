@@ -1,5 +1,6 @@
 ﻿using System;
 using GameCore.Script.Interface;
+using GameCore.Script.Managers.Resource;
 
 namespace GameCore.Script.GameManagers.Resource
 {

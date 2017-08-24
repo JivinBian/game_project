@@ -1,19 +1,18 @@
-﻿using System.Collections.ObjectModel;
-using GameCore.Script.Managers.Time;
+﻿using GameCore.Script.Managers.Time;
 using UnityEngine;
 
-namespace GameCore.Script.Common.Interactive
+namespace GameCore.Script.Common.ObjectInput
 {
-    public sealed class CollideMouseController : CollideControllerBase
+    public sealed class InputMouseController : InputControllerBase
     {
         private float _lastPressTime;
         private const float DELTA_TIME = 0.2f;
         private bool _enalbed;
-        
-        
-        public CollideMouseController(Transform pTargetTransform,bool pEnabled=true) : base(pTargetTransform)
+
+
+        public InputMouseController(Transform pTargetTransform, bool pEnabled = true) : base(pTargetTransform)
         {
-            Enabled=pEnabled;
+            Enabled = pEnabled;
         }
 
         public override bool Enabled
@@ -32,7 +31,7 @@ namespace GameCore.Script.Common.Interactive
                 }
             }
         }
-        
+
         protected override void Check()
         {
             if (Input.GetMouseButtonDown(0))

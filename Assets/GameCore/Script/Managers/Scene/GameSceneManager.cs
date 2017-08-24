@@ -5,7 +5,10 @@ using GameCore.Script.DataClass.DataConfig;
 using GameCore.Script.GameData.DataConfig;
 using GameCore.Script.GameManagers.Log;
 using GameCore.Script.Managers.DataConfig;
+using GameCore.Script.Managers.Object;
+using GameCore.Script.Managers.Scene;
 using GameCore.Script.Managers.Time;
+using GameCore.Script.SceneObject;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,6 +32,7 @@ namespace GameCore.Script.GameManagers.Scene
 		private SceneInfo _sceneInfo;
 
 		private AsyncOperation _asyncOperation;
+		private CameraControllerBase _cameraController;
 		private GameSceneManager()
 		{
 			SwitchSceneCompleteEvent += AsyncLoadSceneComplete;
@@ -36,7 +40,7 @@ namespace GameCore.Script.GameManagers.Scene
 
 		public void Init()
 		{
-			
+			_cameraController=new CameraFixedUp(null,false);
 		}
 
 		/// <summary>
@@ -84,6 +88,13 @@ namespace GameCore.Script.GameManagers.Scene
 		private void AsyncLoadSceneComplete(SceneInfo pSceneInfo)
 		{
 			LogManager.Debug("load scene complete:"+pSceneInfo.Name);
+			_cameraController.SetCamera(Camera.main);
+			_cameraController.Enabled = true;
+		}
+
+		public void SetCameraObject(ObjectBase pObjectBase)
+		{
+			_cameraController.SetTrackedObject(pObjectBase);
 		}
 	}
 }

@@ -1,18 +1,20 @@
 ﻿using GameCore.Script.Managers.Time;
 using UnityEngine;
 
-namespace GameCore.Script.Common.Interactive
+namespace GameCore.Script.Common.ObjectInput
 {
-    public sealed class CollideTouchController:CollideControllerBase
+    public sealed class InputTouchController : InputControllerBase
     {
         private bool _touched = false;
-        public CollideTouchController(Transform pTargetTransform):base(pTargetTransform)
+
+        public InputTouchController(Transform pTargetTransform) : base(pTargetTransform)
         {
             TimeManager.GetInstance().FixedUpdateEvent += Check;
         }
+
         protected override void Check()
         {
-            if (Input.touchCount != 1 )
+            if (Input.touchCount != 1)
                 return;
 
             TouchPhase tPhase = Input.GetTouch(0).phase;
@@ -27,7 +29,7 @@ namespace GameCore.Script.Common.Interactive
                     DispatchPressEvent(hit.point);
                 }
             }
-            if (tPhase == TouchPhase.Moved||tPhase==TouchPhase.Canceled)
+            if (tPhase == TouchPhase.Moved || tPhase == TouchPhase.Canceled)
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);

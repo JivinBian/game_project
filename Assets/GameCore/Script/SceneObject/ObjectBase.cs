@@ -9,7 +9,7 @@
 *********************************************************************************/
 
 using System;
-using GameCore.Script.Common.Interactive;
+using GameCore.Script.Common.ObjectInput;
 using GameCore.Script.DataClass.DataConfig;
 using GameCore.Script.DataClass.ObjectData;
 using GameCore.Script.GameData.DataConfig;
@@ -31,7 +31,7 @@ namespace GameCore.Script.SceneObject
         protected IResourceManager _resourceManager;
         protected string _sourcePath = "SceneModel/";
 
-        protected CollideControllerBase _collideController;
+        protected InputControllerBase InputController;
 
         ////
         /// 存储容器的transform
@@ -151,10 +151,10 @@ namespace GameCore.Script.SceneObject
 
         private void InitCollider()
         {
-            _collideController = new CollideMouseController(_content.transform);
-            _collideController.PressEvent += OnPress;
-            _collideController.ReleaseEvent += OnRelease;
-            _collideController.ClickEvent += OnClick;
+            InputController = new InputMouseController(_content.transform);
+            InputController.PressEvent += OnPress;
+            InputController.ReleaseEvent += OnRelease;
+            InputController.ClickEvent += OnClick;
             var tCollider = _content.AddComponent<CapsuleCollider>();
             tCollider.height = _objectBaseData.Height;
             tCollider.radius = _objectBaseData.Radius;
@@ -163,8 +163,8 @@ namespace GameCore.Script.SceneObject
 
         public virtual bool TouchEnabled
         {
-            get { return _collideController.Enabled; }
-            set { _collideController.Enabled = value; }
+            get { return InputController.Enabled; }
+            set { InputController.Enabled = value; }
         }
 
         protected virtual void OnPress(Transform pTarget, Vector3 pTargetPoint)

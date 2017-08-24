@@ -1,4 +1,4 @@
-﻿using GameCore.Script.Common.Interactive;
+﻿using GameCore.Script.Common.ObjectInput;
 using GameCore.Script.Common.State.StateStruct;
 using GameCore.Script.Managers.Object;
 using GameCore.Script.SceneObject;
@@ -21,7 +21,7 @@ public class Test : MonoBehaviour
 		_player=ObjectManager.GetInstance().GetPlayer(1);
 		Idle.onClick.AddListener(OnClickIdle);
 		GameObject pGo=GameObject.Find("Plane");
-		new CollideMouseController(pGo.transform).ClickEvent+= (t,p) => { _player.MoveTo(p); };
+		new InputMouseController(pGo.transform).ClickEvent+= (t,p) => { _player.MoveTo(p); };
 	}
 
 	private void OnClickIdle()
