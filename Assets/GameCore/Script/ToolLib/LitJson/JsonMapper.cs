@@ -17,9 +17,8 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 
-
-//namespace LitJson
-//{
+namespace LitJson
+{
     internal struct PropertyMetadata
     {
         public MemberInfo Info;
@@ -909,6 +908,6 @@ using System.Reflection;
             custom_importers_table.Clear ();
         }
     }
-//}
+}
 
 #endif

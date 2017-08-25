@@ -15,6 +15,7 @@ using GameCore.Script.GameData.DataConfig;
 using GameCore.Script.GameManagers.Log;
 using GameCore.Script.Interface;
 using GameCore.Script.Managers.Resource;
+using LitJson;
 using UnityEngine;
 
 namespace GameCore.Script.Managers.DataConfig

@@ -17,9 +17,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 
-
-//namespace LitJson
-//{
+namespace LitJson
+{
     public class JsonData : IJsonWrapper, IEquatable<JsonData>
     {
         #region Fields
@@ -991,6 +990,6 @@ using System.IO;
             list_enumerator.Reset ();
         }
     }
-//}
+}
 
 #endif

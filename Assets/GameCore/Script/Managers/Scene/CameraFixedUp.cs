@@ -23,7 +23,6 @@ namespace GameCore.Script.Managers.Scene
 			if (_lastPosition!=pGesture.Position)
 			{
 				_currentCamera.transform.RotateAround(_trackedObject.GetPosition(),Vector3.up,pGesture.DeltaMove.x/10);
-				_trackedObject.SetDirection(_trackedObject.GetDirection()+pGesture.DeltaMove.x/10);
 				_offset = _currentCamera.transform.position - _trackedObject.GetPosition();
 				_lastPosition = pGesture.Position;
 			}

@@ -10,6 +10,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameCore.Script.DataClass.ObjectData;
 using GameCore.Script.GameManagers.Log;
 using GameCore.Script.GameManagers.Scene;
@@ -99,6 +100,11 @@ namespace GameCore.Script.Managers.Object
 			}
 			return null;
 		}
+
+		public CommonPlayer[] GetAllPlayers()
+		{
+			return _playerList.Values.ToArray();
+		}
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		/// 
 		public void Test()
@@ -108,9 +114,23 @@ namespace GameCore.Script.Managers.Object
 				Guid = 1,
 				HP = 30,
 				MP = 30,
-				Position = new Vector3(5, 0, 20)
+				Position = new Vector3(0, 0, 0)
 			};
-			CreateSelf(tPlayerData);
+			CreatePlayer(tPlayerData);
+			
+			for (int i = 0; i < 0; i++)
+			{
+				tPlayerData = new PlayerData(DataConfigManager.GetInstance(),1)
+				{
+					Guid =(uint) (2+i),
+					HP = 30,
+					MP = 30,
+					Position = new Vector3(10f*(float)Math.Cos(i*1f),0, 10f*(float)Math.Sin(i*1f))
+				};
+				CreatePlayer(tPlayerData);
+
+			}
+			
 			GameSceneManager.GetInstance().SetCameraObject(Self);
 			var tNPCData = new NPCData(DataConfigManager.GetInstance(), 1)
 			{

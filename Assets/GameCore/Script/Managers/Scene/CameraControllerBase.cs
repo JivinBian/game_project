@@ -24,6 +24,11 @@ namespace GameCore.Script.Managers.Scene
 		{
 			_trackedObject = pTrackedObject;
 		}
+
+		public virtual Camera GetCamera()
+		{
+			return _currentCamera;
+		}
 		protected abstract void UpdatePosition();
 	}
 }
