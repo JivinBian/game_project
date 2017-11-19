@@ -19,15 +19,18 @@ public class Test : MonoBehaviour
 		_btn=GetComponent<Button>();
 		_btn.onClick.AddListener(OnClick);
 		_player=ObjectManager.GetInstance().GetPlayer(1);
-		Idle.onClick.AddListener(OnClickIdle);
+		//Idle.onClick.AddListener(OnClickIdle);
 		GameObject pGo=GameObject.Find("Plane");
-	//	new InputMouseController(pGo.transform).ClickEvent+= (t,p) => { _player.MoveTo(p); };
+		new InputMouseController(pGo.transform).ClickEvent+= OnClickIdle;
 	}
 
-	private void OnClickIdle()
+	private void OnClickIdle(Transform t,Vector3 pPosition)
 	{
-		//_player.ChangeState(ObjectState.Idle);
-		_player.StopMove();
+		CommonPlayer[] tPlayers=ObjectManager.GetInstance().GetAllPlayers();
+		foreach (CommonPlayer player in tPlayers)
+		{
+			player.MoveTo(pPosition);
+		}
 	}
 	private void OnClick()
 	{

@@ -12,11 +12,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 
-//namespace LitJson
-//{
+namespace LitJson
+{
     public enum JsonToken
     {
         None,
@@ -453,4 +452,4 @@ using System.Text;
         }
 
     }
-//}
+}

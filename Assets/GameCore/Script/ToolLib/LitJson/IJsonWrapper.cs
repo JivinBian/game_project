@@ -16,8 +16,8 @@ using System.Collections;
 using System.Collections.Specialized;
 
 
-//namespace LitJson
-//{
+namespace LitJson
+{
     public enum JsonType
     {
         None,
@@ -58,6 +58,6 @@ using System.Collections.Specialized;
         string ToJson ();
         void   ToJson (JsonWriter writer);
     }
-//}
+}
 
 #endif

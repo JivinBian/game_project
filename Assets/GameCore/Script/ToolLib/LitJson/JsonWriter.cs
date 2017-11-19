@@ -16,8 +16,8 @@ using System.IO;
 using System.Text;
 
 
-//namespace LitJson
-//{
+namespace LitJson
+{
     internal enum Condition
     {
         InArray,
@@ -460,4 +460,4 @@ using System.Text;
             context.ExpectingValue = true;
         }
     }
-//}
+}

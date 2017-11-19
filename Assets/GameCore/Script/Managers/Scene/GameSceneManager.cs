@@ -40,7 +40,7 @@ namespace GameCore.Script.GameManagers.Scene
 
 		public void Init()
 		{
-			_cameraController=new CameraFixedUp(null,false);
+			_cameraController=new CameraFixedView();
 		}
 
 		/// <summary>
@@ -95,6 +95,11 @@ namespace GameCore.Script.GameManagers.Scene
 		public void SetCameraObject(ObjectBase pObjectBase)
 		{
 			_cameraController.SetTrackedObject(pObjectBase);
+		}
+
+		public Camera GetCurrentCamera()
+		{
+			return _cameraController.GetCamera();
 		}
 	}
 }

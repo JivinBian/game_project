@@ -15,8 +15,8 @@ using System.IO;
 using System.Text;
 
 
-//namespace LitJson
-//{
+namespace LitJson
+{
     internal class FsmContext
     {
         public bool  Return;
@@ -909,4 +909,4 @@ using System.Text;
             input_buffer = input_char;
         }
     }
-//}
+}

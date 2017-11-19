@@ -10,7 +10,7 @@ namespace GameCore.Script.SceneObject
 	{
 		protected AutoMoveAgent _autoSearchPath;
 		private readonly RoleData _roleData;
-		private float _stopDistance=2f;
+		private float _stopDistance=0f;
 		///////////////////////////////////////////////
 		/// event
 		public event Action MoveStartEvent;
