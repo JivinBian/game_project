@@ -1,12 +1,12 @@
 ﻿  [
     {
 		"id":1,
-		"fileName": "SceneInfo",
+		"fileName": "GameConfig",
 		"classStructClass":""
     },
 	{
 		"id":2,
-		"fileName": "SceneModel",
+		"fileName": "Map",
 		"classStructClass":""
     },
 	{
